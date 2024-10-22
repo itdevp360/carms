@@ -24,12 +24,12 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(CodetableSeeder::class);
 
-        CarFormProcessor::factory()
-        ->count(100)
-        ->hasCarFormOwner()
-        ->hasRootCauseAnalysis(12)
-        ->hasRiskAssessment(2)
-        ->hasFeedbackManager()
-        ->create();
+        // CarFormProcessor::factory()
+        // ->count(100)
+        // ->hasCarFormOwner()
+        // ->hasRootCauseAnalysis(12)
+        // ->hasRiskAssessment(2)
+        // ->hasFeedbackManager()
+        // ->create();
     }
 }

@@ -102,26 +102,14 @@ export default function CalendarLayout({ forms, roles }) {
     } else if (form.status === "Approved") {
       eventDate = addDays(
         form.source === "Request For Action" ? formatDate(form.car_form_owner.date_correction) : formatDate(form.car_form_owner.date_corrective_action),
-        form.source === "Request For Action" ? 7 : 30
+        form.source === "Request For Action" ? 8 : 31
       );
       eventColor = "#FFB6C7"; 
       eventBorderColor = "#FFAEC1";
       responsiblePerson = form.created_by.name;
 
     } else if (form.status.includes("Verification")) {
-      // if(form.verification?.at(-1)?.status === "Approved"){
-      //   eventDate = addDays(
-      //     form.source === "Request For Action" 
-      //       ? (formatDate(form.verification?.at(-1)?.rfa_verification?.updated_at, 7))
-      //       : (formatDate(form.verification?.at(-1)?.updated_at, 30))
-      //   );
-      // }else {
-      //   eventDate = addDays(
-      //     form.source === "Request For Action" 
-      //       ? (formatDate(form.verification?.at(-1)?.updated_at, 7))
-      //       : (formatDate(form.verification?.at(-1)?.updated_at, 30))
-      //   );
-      // }
+      eventDate = addDays(form.verification?.at(-1)?.created_at, form.source === "Request For Action" ? 7 : 30)
       eventColor = "#FFB6C7"; 
       eventBorderColor = "#FFAEC1";
       responsiblePerson = form.created_by.name;
