@@ -109,7 +109,11 @@ export default function CalendarLayout({ forms, roles }) {
       responsiblePerson = form.created_by.name;
 
     } else if (form.status.includes("Verification")) {
-      eventDate = addDays(form.verification?.at(-1)?.created_at, form.source === "Request For Action" ? 7 : 30)
+      if(form.verification?.at(-1)?.status === "Approved"){
+        eventDate = addDays(form.verification?.at(-1)?.updated_at, form.source === "Request For Action" ? 7 : 30)
+      }else {
+        eventDate = addDays(form.verification?.at(-1)?.updated_at, 3)
+      }
       eventColor = "#FFB6C7"; 
       eventBorderColor = "#FFAEC1";
       responsiblePerson = form.created_by.name;

@@ -10,9 +10,8 @@ export default function ChartTabLayout({ forms }) {
   const [endYear, setEndYear] = useState(currentYear);
   const [selectedStatus, setSelectedStatus] = useState("");
   const [selectedCARType, setSelectedCARType] = useState("");
-  const [selectedDepartment, setSelectedDepartment] = useState(""); // New state for department filter
+  const [selectedDepartment, setSelectedDepartment] = useState("");
 
-  // Filter forms by year, status, and department
   const filterFormsByYearStatusAndDepartment = (form, year, status, department) => {
     const formYear = new Date(form.created_at).getFullYear();
 
@@ -95,8 +94,7 @@ export default function ChartTabLayout({ forms }) {
       },
     },
   };
-
-  // Determine which chart to show based on the selected CAR type
+  
   const renderChart = () => {
     switch (selectedCARType) {
       case "ia":
@@ -136,7 +134,6 @@ export default function ChartTabLayout({ forms }) {
           />
         );
       default:
-        // If no CAR type is selected, show all charts
         return (
           <>
             <div className="border">
