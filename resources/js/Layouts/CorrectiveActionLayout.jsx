@@ -43,17 +43,19 @@ export default function CorrectiveActionLayout({ forms, userForm, data, setData 
           required={data.status !== "Draft"}
           onChange={(e) => setData("corrective_action", e.target.value)}
           error={errors.corrective_action}
-          className={`${((
-              userForm.status === managerReview || 
-              userForm.status === managerRevised || 
-              userForm.status === approverReview || 
-              userForm.status === approverRevised) ||
-            (userForm.status === revision && !openFeedback.feedback_corrective_action)) && 
+          className={`${(
+            userForm.status === managerReview || 
+            userForm.status === managerRevised || 
+            userForm.status === approverReview || 
+            userForm.status === approverRevised || 
+            ((userForm.status === revision) && (!openFeedback.feedback_corrective_action && !openFeedback.feedback_root_cause_analysis))
+          ) && 
             "bg-[#f4f4f4]"
           }`}
           disabled={
-            (userForm.status === managerReview || userForm.status === managerRevised) || 
-            (userForm.status === revision && !openFeedback.feedback_corrective_action) ||
+            userForm.status === managerReview || 
+            userForm.status === managerRevised || 
+            (userForm.status === revision && !openFeedback.feedback_corrective_action && !openFeedback.feedback_root_cause_analysis) ||
             userForm.status === approverReview || 
             userForm.status === approverRevised
           }
@@ -68,15 +70,18 @@ export default function CorrectiveActionLayout({ forms, userForm, data, setData 
           required={data.status !== "Draft"}
           error={errors.date_corrective_action}
           className={`${(
-            (userForm.status === managerReview || userForm.status === managerRevised) ||
+            userForm.status === managerReview || 
+            userForm.status === managerRevised || 
             userForm.status === approverReview || 
-            userForm.status === approverRevised ||
-            (userForm.status === revision && !openFeedback.feedback_corrective_action)) && 
+            userForm.status === approverRevised || 
+            (userForm.status === revision && (!openFeedback.feedback_corrective_action && !openFeedback.feedback_root_cause_analysis))
+          ) && 
             "bg-[#f4f4f4]"
           }`}
           disabled={
-            (userForm.status === managerReview || userForm.status === managerRevised) || 
-            (userForm.status === revision && !openFeedback.feedback_corrective_action) || 
+            userForm.status === managerReview || 
+            userForm.status === managerRevised || 
+            (userForm.status === revision && (!openFeedback.feedback_corrective_action && !openFeedback.feedback_root_cause_analysis)) || 
             userForm.status === approverReview || 
             userForm.status === approverRevised
           }
@@ -129,13 +134,13 @@ export default function CorrectiveActionLayout({ forms, userForm, data, setData 
           <SelectErrorInputLabel
             name="similar_nonconformity"
             value={data.similar_nonconformity}
-            icon={<FaFileCircleQuestion size={18} className={`items-center ${(userForm.status === managerReview || userForm.status === managerRevised || userForm.status === approverReview || userForm.status === approverRevised) && "bg-[#f4f4f4] text-black"}`}/>}
+            icon={<FaFileCircleQuestion size={18} className={`items-center ${(userForm.status === managerReview || userForm.status === managerRevised || userForm.status === approverReview || userForm.status === approverRevised || (userForm.status === revision && !openFeedback.feedback_corrective_action)) && "bg-[#f4f4f4] text-black"}`}/>}
             label="Does a similar non-conformity exist?"
             required={data.status !== "Draft"}
             onChange={(e) => setData("similar_nonconformity", e.target.value)}
             error={errors.similar_nonconformity}
-            className={`${(userForm.status === managerReview || userForm.status === managerRevised || userForm.status === approverReview || userForm.status === approverRevised) && "bg-[#f4f4f4] text-black"}`}
-            disabled={(userForm.status === managerReview || userForm.status === managerRevised || userForm.status === approverReview || userForm.status === approverRevised)}
+            className={`${(userForm.status === managerReview || userForm.status === managerRevised || userForm.status === approverReview || userForm.status === approverRevised || (userForm.status === revision && !openFeedback.feedback_corrective_action)) && "bg-[#f4f4f4] text-black"}`}
+            disabled={(userForm.status === managerReview || userForm.status === managerRevised || userForm.status === approverReview || userForm.status === approverRevised || (userForm.status === revision && !openFeedback.feedback_corrective_action))}
           >
             <option value="">--Yes / No --</option>
             <option value="yes">Yes</option>

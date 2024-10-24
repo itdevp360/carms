@@ -58,9 +58,7 @@ class SendAutoEmailFormJobs implements ShouldQueue
 
             $details = [
                 'receiver_name' => $carForm->receivedBy->name,
-                'car_form_number' => $carForm->source === "Request For Action"
-                    ? "Request For Action form with " . $carForm->car_form_number
-                    : "CAR form with CAR No. " . $carForm->car_form_number,
+                'car_form_number' => $carForm->car_form_number,
                 'redirect_link' => "",
                 'reply_due_date' => $deadline->format('M d, Y'),
                 'label' => $carForm->source === "Request For Action"

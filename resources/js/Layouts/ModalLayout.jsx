@@ -46,7 +46,7 @@ function ButtonLayout({processing, setData, roles, data, selectedForm, selectedT
               selectedTabIndex={selectedTabIndex}
               form={selectedForm}
               processing={processing}
-              firstButton="Returned to Owner"
+              firstButton="Return to Owner"
               secondButton="Approve"
               firstButtonClick={() => {setData({...data, status: "Revision"})}}
               secondButtonClick={() => {setData({...data, status: "Approver's Review"})}}
@@ -56,7 +56,7 @@ function ButtonLayout({processing, setData, roles, data, selectedForm, selectedT
             selectedTabIndex={selectedTabIndex}
             form={selectedForm}
             processing={processing}
-            firstButton="Returned to Owner"
+            firstButton="Return to Owner"
             secondButton="Approve"
             firstButtonClick={() => {setData({...data, status: "Revision"})}}
             secondButtonClick={() => {setData({...data, status: "Approved"})}}

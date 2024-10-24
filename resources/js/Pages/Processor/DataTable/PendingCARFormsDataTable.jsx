@@ -45,11 +45,11 @@ export default function PendingCARFormsDataTable({ forms }) {
 
   const renderHeader = () => {
     let label = "";
-    if(forms.at(-1).status === "For Submission" || forms.at(-1).status === "Draft" || forms.at(-1).status === "Revision"){
+    if(forms.at(-1)?.status === "For Submission" || forms.at(-1)?.status === "Draft" || forms.at(-1)?.status === "Revision"){
       label = "Submission Delay";
-    }else if(forms.at(-1).status === "Manager's Review" || forms.at(-1).status === "Manager's Revised"){
+    }else if(forms.at(-1)?.status === "Manager's Review" || forms.at(-1)?.status === "Manager's Revised"){
       label = "Manager Approval Delay";
-    }else if(forms.at(-1).status === "Approver's Review" || forms.at(-1).status === "Approver's Revised"){
+    }else if(forms.at(-1)?.status === "Approver's Review" || forms.at(-1)?.status === "Approver's Revised"){
       label = "IMS Approval Delay";
     }
     return (
@@ -88,7 +88,7 @@ export default function PendingCARFormsDataTable({ forms }) {
   };
 
   const getHeader = (rowData) => {
-    return rowData.props.value[0].status === "Closed" ? "Date Closed" : "Reply Due Date";
+    return rowData.props.value[0]?.status === "Closed" ? "Date Closed" : "Reply Due Date";
   };
 
   const dateAssigned = (data) => {

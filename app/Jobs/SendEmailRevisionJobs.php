@@ -36,9 +36,7 @@ class SendEmailRevisionJobs implements ShouldQueue
         }
         $details = [
             'receiver_name' => $form->receivedBy->name,
-            'car_form_number' => $form->source === "Request For Action" 
-                ? "Request For Action form with ". $form->car_form_number
-                : "CAR form with CAR No. ". $form->car_form_number,
+            'car_form_number' => $form->car_form_number,
             'label' => $form->source === "Request For Action" 
                 ? "Request For Action (RFA)" 
                 : "Corrective Action Request (CAR)",

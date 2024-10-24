@@ -2,7 +2,7 @@ import AddFeedback from "@/Components/AddFeedback";
 import Feedback from "@/Components/Feedback";
 import NumberErrorInputLabel from "@/Components/NumberErrorInputLabel";
 import TextErrorInputLabel from "@/Components/TextErrorInputLabel";
-import { FaInbox } from "react-icons/fa6";
+import { FaHashtag, FaInbox } from "react-icons/fa6";
 
 const managerRevised = "Manager's Revised";
 const approverRevised = "Approver's Revised";
@@ -146,7 +146,7 @@ export default function RiskAssessmentTabLayout({data, setData , errors, form, s
                 divClassName="col-span-2"
                 name={`p_${index}`}
                 value={assessment.p}
-                icon={<FaInbox size={18} className="items-center"/>}
+                icon={<FaHashtag size={18} className="items-center"/>}
                 label="P"
                 onChange={(e) => handleChangeAssessment(index, 'p', e.target.value)}
                 error={errors.risk_assessment?.[index].p}
@@ -169,7 +169,7 @@ export default function RiskAssessmentTabLayout({data, setData , errors, form, s
                 divClassName="col-span-2"
                 name={`s_${index}`}
                 value={assessment.s}
-                icon={<FaInbox size={18} className="items-center"/>}
+                icon={<FaHashtag size={18} className="items-center"/>}
                 label="S"
                 onChange={(e) => handleChangeAssessment(index, 's', e.target.value)}
                 error={errors.risk_assessment?.[index].s}
@@ -192,7 +192,7 @@ export default function RiskAssessmentTabLayout({data, setData , errors, form, s
                 divClassName="col-span-2"
                 name={`r_${index}`}
                 value={assessment.r}
-                icon={<FaInbox size={18} className="items-center"/>}
+                icon={<FaHashtag size={18} className="items-center"/>}
                 label="R"
                 onChange={(e) =>  handleChangeAssessment(index, 'r', e.target.value)}
                 error={errors.risk_assessment?.[index].r}

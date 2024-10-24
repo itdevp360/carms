@@ -17,7 +17,7 @@ export function VerificationViewModal({forms, openModal, closingModal, title, us
           {forms.source !== "Request For Action" ? (  
           <>
               {forms.verification.length >= 2 && (
-                <CreateOtherVerificationForm form={forms} users={users} closingModal={closingModal} buttonLabel="Approved" secondButtonLabel="Return to Owner"/>
+                <CreateOtherVerificationForm form={forms} users={users} closingModal={closingModal} buttonLabel="Approved" secondButtonLabel="Return to Processor"/>
               )}
               {forms.verification.length === 1 && (
                 <CreateVerificationForm form={forms} users={users} closingModal={closingModal} buttonLabel="Approved" secondButtonLabel="Return to Proccessor"/>

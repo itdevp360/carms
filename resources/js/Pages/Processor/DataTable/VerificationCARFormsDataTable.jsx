@@ -13,7 +13,6 @@ import { EditVerificationModal } from '@/Layouts/Processor/DataTableModal/EditVe
 import { ViewDetailsCarRefNumberModal } from '@/Layouts/Processor/DataTableModal/ViewDetailsCarRefNumModal';
 
 const VerificationCARFormsDataTable = ({ forms, users }) => {
-  console.log(forms);
   const [globalFilterValue, setGlobalFilterValue] = useState('');
   const [openModal, setOpenModal] = useState(false); 
   const [openEditModal, setOpenEditModal] = useState(false); 

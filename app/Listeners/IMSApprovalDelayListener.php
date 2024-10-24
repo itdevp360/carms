@@ -41,12 +41,15 @@ class IMSApprovalDelayListener
         ->get();
         
         foreach($car_forms as $form){
-            $delay = new DelayForms;
-            $delay->car_form_id = $form->id;
-            $delay->submission_delay = 0;
-            $delay->manager_approval_delay = 0;
-            $delay->ims_approval_delay = Carbon::parse($form->updated_at)->diffInWeekdays(Carbon::now());
-            $delay->save();
+            // Use updateOrCreate to either update the existing record or create a new one
+            DelayForms::updateOrCreate(
+                ['car_form_id' => $form->id], // Search for a record with this car_form_id
+                [
+                    'submission_delay' => 0, // Set fields you want to update or insert
+                    'manager_approval_delay' => 0,
+                    'ims_approval_delay' => Carbon::parse($form->updated_at)->diffInWeekdays(Carbon::now())
+                ]
+            );
         }
     }
 }

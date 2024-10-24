@@ -2,6 +2,7 @@ import AddFeedback from "@/Components/AddFeedback";
 import Checkbox from "@/Components/Checkbox";
 import Feedback from "@/Components/Feedback";
 import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
 import TextareaInput from "@/Components/TextareaInput";
 import { categories } from "@/constant";
 import { RootCauseAddRemoveChange } from "@/Hooks/RootCauseAddRemoveChange";
@@ -31,6 +32,7 @@ function RootCauseCategoryFieldsLayout({category, data, setData, errors, form, o
                   form.status === approverRevised
                 ? "col-span-12" 
                 : "col-span-11"}`}>
+            <InputLabel htmlFor={category.name} value={`${index+1 === 1 ? "1st Why": index+1 === 2 ? "2nd Why" : index+1 === 3 ? "3rd Why" : `${index+1}th Why`}`}/>
             <TextareaInput
               name={`${category.name}_${index}`}
               value={field.value}
@@ -60,7 +62,7 @@ function RootCauseCategoryFieldsLayout({category, data, setData, errors, form, o
           )}
         </div>
       ))}
-      {((form.status === "For Submission" && form.status === "Draft") || (form.status === revision && openFeedback.feedback_root_cause_analysis)) && (
+      {(form.status === "For Submission" || form.status === "Draft" || (form.status === revision && openFeedback.feedback_root_cause_analysis)) && (
         <div className="mt-4">
           <span onClick={handleAddField} className="rounded bg-[#ffaf54d6] hover:bg-[#f99d35d6] px-6 py-2 cursor-pointer">
             Add

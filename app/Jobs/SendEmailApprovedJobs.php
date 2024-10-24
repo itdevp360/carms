@@ -32,9 +32,7 @@ class SendEmailApprovedJobs implements ShouldQueue
         $form = CARFormProcessor::findOrFail($this->formId);
         $details = [
             'receiver_name' => $form->createdBy->name,
-            'car_form_number' => $form->source === "Request For Action" 
-                ? "Request For Action form with ". $form->car_form_number
-                : "CAR form with CAR No. ". $form->car_form_number,
+            'car_form_number' => $form->car_form_number,
             'label' => $form->source === "Request For Action" 
                 ? "Request For Action (RFA)" 
                 : "Corrective Action Request (CAR)",

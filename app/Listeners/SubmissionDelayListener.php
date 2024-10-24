@@ -50,12 +50,14 @@ class SubmissionDelayListener
         ->get();
 
         foreach($car_forms as $form){
-            $delay = new DelayForms;
-            $delay->car_form_id = $form->id;
-            $delay->submission_delay = Carbon::parse($form->status === "Revision" ? $form->updated_at : $form->created_at)->diffInWeekdays(Carbon::now());
-            $delay->manager_approval_delay = 0;
-            $delay->ims_approval_delay = 0;
-            $delay->save();
-        }
+          DelayForms::updateOrCreate(
+              ['car_form_id' => $form->id],
+              [
+                  'submission_delay' => Carbon::parse($form->status === "Revision" ? $form->updated_at : $form->created_at)->diffInWeekdays(Carbon::now()), // Set fields you want to update or insert
+                  'manager_approval_delay' => 0,
+                  'ims_approval_delay' => 0
+              ]
+          );
+      }
     }
 }

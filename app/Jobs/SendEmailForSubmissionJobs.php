@@ -30,9 +30,7 @@ class SendEmailForSubmissionJobs implements ShouldQueue
         $details = [
             'receiver_name' => $this->form->receivedBy->name,
             'source' => $this->form->source,
-            'car_form_number' => $this->form->source === "Request For Action" 
-                ? "Request For Action form with ". $this->form->car_form_number
-                : "CAR form with CAR No. ". $this->form->car_form_number,
+            'car_form_number' => $this->form->car_form_number,
             'redirect_link' => "",
             'reply_due_date' => Carbon::now()->addDays(7)->format('M d, Y'),
             'label' => $this->form->source === "Request For Action" 

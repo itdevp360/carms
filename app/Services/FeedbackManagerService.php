@@ -34,7 +34,7 @@ class FeedbackManagerService
         return $form;
     }
     public function createFeedbackApprover($data){
-        if($data['status'] === "Approved"){
+        if($data['status'] === "Approved" || $data['status'] === "Closed"){
             FeedbackApprover::where('car_form_id', $data['car_form_id'])->delete();
             return $data;
         }

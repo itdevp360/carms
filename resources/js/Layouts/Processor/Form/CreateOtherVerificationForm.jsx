@@ -255,7 +255,7 @@ export function CreateOtherVerificationForm({form, users, closingModal ,buttonLa
             disabled={processing}
             onClick={() => {
               if(lastVerification.status === "Review" || lastVerification.status === "Revised" ){
-                if(lastVerification.conclusion !== "For Closure"){
+                if(lastVerification.otherVerification.conclusion !== "For Closure"){
                   setData('status', "Approved");
                 }else {
                   setData('status', "Closed");

@@ -10,10 +10,10 @@ const DetailsRow = ({ icon: Icon, label, value, colSpan = 3, iconSize = 16 }) =>
   <>
     <div className={`col-span-${colSpan} flex items-center mt-2 border-b-2 border-gray-300`}>
       <Icon className="text-gray-400 mr-2" size={iconSize} />
-      <p className="text-base font-bold">{label}</p>
+      <p className="text-base text-gray-400">{label}</p>
     </div>
     <div className={`col-span-${colSpan} flex items-center mt-2 border-b-2 border-gray-300`}>
-      <p className="text-base">{value}</p>
+      <p className="text-base font-bold">{value}</p>
     </div>
   </>
 );
