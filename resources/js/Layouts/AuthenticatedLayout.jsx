@@ -169,7 +169,7 @@ export default function Authenticated({ user, roles, header, breadcrumb ,childre
                       <div className='group flex text-xl items-center ps-12 pe-[15px] py-2.5'>
                         <FaFileCircleCheck className='text-[#5a525275] text-base group-hover:text-[#e65c009f] me-2'/>
                         <NavLink href={route('car_form_approver.index')} className='text-sm'>
-                          For Review
+                          Review Submission
                         </NavLink>
                       </div>
                       <div className='group flex text-xl items-center ps-12 pe-[15px] py-2.5'>
@@ -208,7 +208,7 @@ export default function Authenticated({ user, roles, header, breadcrumb ,childre
                       <div className='group flex text-xl items-center ps-12 pe-[15px] py-2.5'>
                         <FaFilePen className='text-[#5a525275] text-base group-hover:text-[#e65c009f] me-2'/>
                         <NavLink href={route('car_form_department_head.index')} className='text-sm'>
-                          For Review
+                          Review Submission
                         </NavLink>
                       </div>
                       <div className='group flex text-xl items-center ps-12 pe-[15px] py-2.5'>

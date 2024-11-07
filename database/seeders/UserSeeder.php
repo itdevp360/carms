@@ -24,14 +24,14 @@ class UserSeeder extends Seeder
         $processor->roles()->attach(3);
         $processor->roles()->attach(4);
 
-        $approver = User::factory()->create();
-        $approver->roles()->attach(1);
+        // $approver = User::factory()->create();
+        // $approver->roles()->attach(1);
         
-        $dept_head = User::factory()->create();
-        $dept_head->roles()->attach(2);
+        // $dept_head = User::factory()->create();
+        // $dept_head->roles()->attach(2);
         
-        $process_owner = User::factory()->create();
-        $process_owner->roles()->attach(4);
+        // $process_owner = User::factory()->create();
+        // $process_owner->roles()->attach(4);
 
     }
 }

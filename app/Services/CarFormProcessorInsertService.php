@@ -59,7 +59,13 @@ class CarFormProcessorInsertService
 
   public function generateCarFormNumber($model, $carFormNumber)
   {
-    $concernedDepartmentPrefix = strtoupper(substr($model->concerned_department ?? '', 0, 3));
+    if($model->concerned_department === "IH Lab"){
+      $concernedDepartmentPrefix = "LAB";
+    }else if($model->concerned_department === "IH WEM"){
+      $concernedDepartmentPrefix = "WEM";
+    }else {
+      $concernedDepartmentPrefix = strtoupper(substr($model->concerned_department ?? '', 0, 3));
+    }
     
     $sourcePrefix = in_array($model->source, ['Internal Audit', 'Non Audit', 'Voice of Customer', 'Request For Action'])
         ? strtoupper(implode('', array_map(fn($word) => $word[0], explode(' ', $model->source))))
