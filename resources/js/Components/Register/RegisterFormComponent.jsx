@@ -6,6 +6,8 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { useForm } from '@inertiajs/react';
 import Swal from 'sweetalert2';
+import { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
 const departments = [
   { name: 'consulting', label: 'Consulting' },
@@ -41,6 +43,16 @@ const CheckboxGroup = ({ data, setData, checkboxes }) => {
 };
 
 export default function RegisterFormComponent({ roles }) {
+  const [showPassword, setShowPassword] = useState(true);
+  const handleTogglePassword = () => {
+      setShowPassword(!showPassword)
+  }
+
+  const [showConfirmPassword, setShowConfirmPassword] = useState(true);
+  const handleToggleConfirmPassword = () => {
+      setShowConfirmPassword(!showConfirmPassword)
+  }
+
   const { data, setData, post, processing, errors, reset } = useForm({
     name: '',
     email: '',
@@ -147,7 +159,9 @@ export default function RegisterFormComponent({ roles }) {
                   <InputLabel htmlFor="password" value="Password" />
                   <TextInput
                     id="password"
-                    type="password"
+                    type={showPassword ? "password" : "text"}
+                    suffixIcon={showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                    togglePassword={handleTogglePassword}
                     name="password"
                     value={data.password}
                     className="mt-1 block w-full"
@@ -157,15 +171,27 @@ export default function RegisterFormComponent({ roles }) {
                     required
                   />
                   <InputError message={errors.password} className="mt-2" />
+                  {(!(/[^a-zA-Z0-9]+/.test(data.password)) || !(/[A-Z]+/.test(data.password)) || !(/[0-9]+/.test(data.password)) || data.password.length < 8) && (
+                    <div class="mt-2 ms-4 text-xs italic">
+                      <ul className='list-disc'>
+                        <li className={`${data.password.length >= 8 ? "text-green-500" : "text-red-500"}`}> At least 8 min. </li>
+                        <li className={`${/[^a-zA-Z0-9]+/.test(data.password) ? "text-green-500" : "text-red-500"}`}> 1 Special Character </li>
+                        <li className={`${/[A-Z]/.test(data.password) ? "text-green-500" : "text-red-500"}`}> 1 Uppercase </li>
+                        <li className={`${/[0-9]/.test(data.password) ? "text-green-500" : "text-red-500"}`}> 1 Number </li>
+                      </ul>
+                    </div>
+                  )}
                 </div>
                 <div className="ms-2">
                   <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
                   <TextInput
                     id="password_confirmation"
-                    type="password"
+                    type={showConfirmPassword ? "password" : "text"}
+                    suffixIcon={showConfirmPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                    togglePassword={handleToggleConfirmPassword}
                     name="password_confirmation"
                     value={data.password_confirmation}
-                    className="mt-1 block w-full"
+                    className={`mt-1 block w-full ${data.password === data.password_confirmation ? "focus:border-green-500" : "focus:border-red-500"}`}
                     autoComplete="new-password"
                     placeholder="Enter Password Confirm"
                     onChange={(e) => setData('password_confirmation', e.target.value)}

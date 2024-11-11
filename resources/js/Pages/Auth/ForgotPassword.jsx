@@ -19,7 +19,7 @@ export default function ForgotPassword({ status }) {
     };
 
     return (
-        <GuestLayout>
+        <GuestLayout className="sm:max-w-7xl">
             <Head title="Forgot Password" />
 
             <div className='flex justify-between -my-4 -ms-6'>
