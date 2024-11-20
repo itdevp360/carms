@@ -11,6 +11,8 @@ use App\Http\Requests\UpdateVerificationRequest;
 use App\Services\VerificationProcessorService;
 use App\Services\FeedbackManagerService;
 
+use App\Jobs\SendEmailClosedJobs;
+
 class VerificationProcessorController extends Controller
 {
     /**
@@ -35,6 +37,7 @@ class VerificationProcessorController extends Controller
         $feedback->createFeedbackApprover($data);
         if($data['status'] === "Closed"){
             $this->updatingStatusVerification($data, "Closed");
+            SendEmailClosedJobs::dispatch($data['car_form_id']);
         }
     }
 }
