@@ -69,7 +69,8 @@ export default function PendingCARFormsDataTable({ forms }) {
     );
   };
   
-  const openDetailModal = () => {
+  const openDetailModal = (rowData) => {
+    setSelectedForm(rowData); 
     setOpenFormDetail(true);
   };
 

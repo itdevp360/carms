@@ -19,7 +19,7 @@ const DetailsRow = ({ icon: Icon, label, value, colSpan = 3, iconSize = 16 }) =>
 );
 
 export default function FormAccordion({ forms, selectedIndex = null }) {
-  const { car_form_owner = {} } = forms;
+  // const { car_form_owner = {} } = forms;
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -44,34 +44,34 @@ export default function FormAccordion({ forms, selectedIndex = null }) {
           
           {forms.car_form_owner && (
             <>
-              {car_form_owner.correction && (
-                <DetailsRow icon={FaComment} label="Correction: " value={car_form_owner.correction} colSpan={6} />
+              {forms.car_form_owner.correction && (
+                <DetailsRow icon={FaComment} label="Correction: " value={forms.car_form_owner.correction} colSpan={6} />
               )}
               {forms.source !== "Request For Action" && (
                 <>
-                  {car_form_owner.consequence && (
-                    <DetailsRow icon={FaComment} label="Consequence: " value={car_form_owner.consequence} colSpan={6} />
+                  {forms.car_form_owner.consequence && (
+                    <DetailsRow icon={FaComment} label="Consequence: " value={forms.car_form_owner.consequence} colSpan={6} />
                   )}
-                  {car_form_owner.deal_consequence && (
-                    <DetailsRow icon={FaComment} label="How did you deal consequence: " value={car_form_owner.deal_consequence} colSpan={6} />
+                  {forms.car_form_owner.deal_consequence && (
+                    <DetailsRow icon={FaComment} label="How did you deal consequence: " value={forms.car_form_owner.deal_consequence} colSpan={6} />
                   )}
-                  {car_form_owner.corrective_action && (
-                    <DetailsRow icon={FaComment} label="Corrective Action: " value={car_form_owner.corrective_action} colSpan={6} />
+                  {forms.car_form_owner.corrective_action && (
+                    <DetailsRow icon={FaComment} label="Corrective Action: " value={forms.car_form_owner.corrective_action} colSpan={6} />
                   )}
                   
-                  {car_form_owner.similar_nonconformity && (
+                  {forms.car_form_owner.similar_nonconformity && (
                     <>
-                      <DetailsRow icon={FaFileCircleQuestion} iconSize={25} label="Does a similar non-conformity exist?: " value={car_form_owner.similar_nonconformity === 'no' ? 'No' : 'Yes'} />
-                      {car_form_owner.similar_nonconformity !== 'no' && (
-                        <DetailsRow icon={FaInbox} iconSize={22} label="If yes, input CAR Reference No.: " value={car_form_owner.similar_nonconformity} />
+                      <DetailsRow icon={FaFileCircleQuestion} iconSize={25} label="Does a similar non-conformity exist?: " value={forms.car_form_owner.similar_nonconformity === 'no' ? 'No' : 'Yes'} />
+                      {forms.car_form_owner.similar_nonconformity !== 'no' && (
+                        <DetailsRow icon={FaInbox} iconSize={22} label="If yes, input CAR Reference No.: " value={forms.car_form_owner.similar_nonconformity} />
                       )}
                     </>
                   )}
-                  {car_form_owner.potential_nonconformity && (
+                  {forms.car_form_owner.potential_nonconformity && (
                     <>
-                      <DetailsRow icon={FaFileCircleQuestion} iconSize={35} label="Could a similar non-conformity potentially occur?: " value={car_form_owner.potential_nonconformity === 'no' ? 'No' : 'Yes'} />
-                      {car_form_owner.potential_nonconformity !== 'no' && (
-                        <DetailsRow icon={FaInbox} iconSize={50} label="If yes, identify the potential nonconformity and include corrective actions: " value={car_form_owner.potential_nonconformity} />
+                      <DetailsRow icon={FaFileCircleQuestion} iconSize={35} label="Could a similar non-conformity potentially occur?: " value={forms.car_form_owner.potential_nonconformity === 'no' ? 'No' : 'Yes'} />
+                      {forms.car_form_owner.potential_nonconformity !== 'no' && (
+                        <DetailsRow icon={FaInbox} iconSize={50} label="If yes, identify the potential nonconformity and include corrective actions: " value={forms.car_form_owner.potential_nonconformity} />
                       )}
                     </>
                   )}
